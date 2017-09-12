@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Evidence_Osob"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="725">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="254*" />
+            <ColumnDefinition Width="294*" />
+            <ColumnDefinition Width="138*"/>
+            <ColumnDefinition Width="31*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Button x:Name="GetDataButton" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Content="Get Data" Click="GetDataButton_Click"/>
+        <Label x:Name="lblTime" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="time"></Label>
+
+        <ListBox ItemsSource="{Binding ListCollection}"  x:Name="ListBox" Grid.Row="4" Grid.ColumnSpan="4">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="Name"/>
+                        <TextBlock Text="{Binding name}"/>
+                        <Label Content="Surname"/>
+                        <TextBlock Text="{Binding surname}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
     </Grid>
 </Window>
